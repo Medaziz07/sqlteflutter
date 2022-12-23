@@ -15,6 +15,7 @@ class _BottomAppBarNavigationState extends State<BottomAppBarNavigation> {
   final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const ProfileScreen(),
+    const AddPostScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -27,14 +28,6 @@ class _BottomAppBarNavigationState extends State<BottomAppBarNavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _selectedIndex, children: _widgetOptions),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red,
-        child: const Icon(Icons.add),
-        onPressed: () {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const AddPostScreen()));
-        },
-      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -45,6 +38,10 @@ class _BottomAppBarNavigationState extends State<BottomAppBarNavigation> {
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle_outline),
+            label: 'Manage',
+          )
         ],
         currentIndex: _selectedIndex,
         // selectedItemColor: Colors.amber[800],
